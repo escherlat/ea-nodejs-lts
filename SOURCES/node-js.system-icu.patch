@@ -1,0 +1,13 @@
+--- node-v4.5.0.orig/Makefile	2016-09-20 21:43:51.052000000 -0500
++++ node-v4.5.0/Makefile	2016-09-20 21:44:38.182000000 -0500
+@@ -40,8 +40,8 @@
+ 
+ # Flags for packaging.
+ BUILD_DOWNLOAD_FLAGS ?= --download=all
+-BUILD_INTL_FLAGS ?= --with-intl=small-icu
+-BUILD_RELEASE_FLAGS ?= $(BUILD_DOWNLOAD_FLAGS) $(BUILD_INTL_FLAGS)
++BUILD_INTL_FLAGS ?= --with-intl=system-icu
++BUILD_RELEASE_FLAGS ?= $(BUILD_INTL_FLAGS)
+ 
+ # Default to verbose builds.
+ # To do quiet/pretty builds, run `make V=` to set V to an empty string,
