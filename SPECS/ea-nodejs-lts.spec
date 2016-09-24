@@ -1,5 +1,5 @@
 %define   _base node
-%define   _prefix /opt/cpanel
+%define   _prefix /opt/cpanel/%{name}
 %define   _includedir %{_prefix}/include
 %define   _bindir %{_prefix}/bin
 %define   _libdir %{_prefix}/lib
@@ -41,7 +41,7 @@ Node.js is a server-side JavaScript environment that uses an asynchronous event-
 This allows Node.js to get excellent performance based on the architectures of many Internet applications.
 
 %package binary
-vSummary:       Node.js build binary tarballs
+Summary:       Node.js build binary tarballs
 Group:         Development/Libraries
 License:       MIT License
 URL:           http://nodejs.org
@@ -117,7 +117,7 @@ mkdir -p $RPM_BUILD_ROOT%{_defaultdocdir}/%{_base}-v%{version}/
 for file in CHANGELOG.md LICENSE README.md ; do
     mv $RPM_BUILD_ROOT%{_prefix}/$file $RPM_BUILD_ROOT%{_defaultdocdir}/%{_base}-v%{version}/
 done
-mv $RPM_BUILD_ROOT%{_node_original_docdir}/* $RPM_BUILD_ROOT%{_defaultdocdir}/%{_base}-v%{version}/
+#mv $RPM_BUILD_ROOT%{_node_original_docdir}/* $RPM_BUILD_ROOT%{_defaultdocdir}/%{_base}-v%{version}/
 rm -rf $RPM_BUILD_ROOT%{_node_original_docdir}
 mkdir -p $RPM_BUILD_ROOT%{_datarootdir}/%{_base}js
 mv $RPM_SOURCE_DIR/%{_base}-v%{version}-linux-%{_node_arch}.tar.gz $RPM_BUILD_ROOT%{_datarootdir}/%{_base}js/
@@ -144,6 +144,7 @@ rm -rf $RPM_SOURCE_DIR/%{_base}-v%{version}-linux-%{_node_arch}
 %files
 %defattr(-,root,root,-)
 %{_defaultdocdir}/%{_base}-v%{version}
+%{_prefix}/share
 %defattr(755,root,root)
 %{_bindir}/node
 
